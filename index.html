@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test de Ishihara - Diagnóstico de Daltonismo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Start Screen -->
+        <section id="start-screen" class="screen active">
+            <div class="card glass">
+                <h1>Test de Visión de Colores</h1>
+                <p>Este test utiliza las láminas de Ishihara para ayudar a identificar posibles deficiencias en la percepción de los colores (Daltonismo).</p>
+                <div class="test-instructions">
+                    <p>• Observa cada imagen durante unos 5 segundos.</p>
+                    <p>• Escribe el número que ves en el recuadro.</p>
+                    <p>• Si no ves nada, deja el campo vacío.</p>
+                </div>
+                <button id="start-btn" class="btn-primary">Empezar Test</button>
+            </div>
+        </section>
+
+        <!-- Test Screen -->
+        <section id="test-screen" class="screen">
+            <div class="progress-bar">
+                <div id="progress" class="progress-fill"></div>
+            </div>
+            <div class="plate-container card glass">
+                <div class="plate-image-wrapper">
+                    <img id="plate-image" src="" alt="Lámina de Ishihara">
+                </div>
+                <div class="plate-controls">
+                    <label for="user-input">¿Qué número ves?</label>
+                    <input type="number" id="user-input" placeholder="Ej: 7" autofocus autocomplete="off">
+                    <button id="next-btn" class="btn-secondary">Siguiente →</button>
+                    <small>Lámina <span id="current-step">1</span> de 12</small>
+                </div>
+            </div>
+        </section>
+
+        <!-- Results Screen -->
+        <section id="result-screen" class="screen">
+            <div class="card glass result-card">
+                <h2>Resultado del Análisis</h2>
+                <div id="result-badge" class="badge">Analizando...</div>
+                <div id="result-description"></div>
+                
+                <div class="detailed-results">
+                    <h3>Detalle de Láminas</h3>
+                    <div id="plates-review" class="review-grid"></div>
+                </div>
+
+                <button onclick="location.reload()" class="btn-primary">Reiniciar Test</button>
+                <p class="disclaimer">Nota: Este test es orientativo y no sustituye un examen clínico profesional.</p>
+            </div>
+        </section>
+    </div>
+    <script type="module" src="script.js"></script>
+</body>
+</html>
