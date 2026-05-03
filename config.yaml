@@ -1,0 +1,13 @@
+model_list:
+  - model_name: local
+    model_info:
+      supports_reasoning: false
+    litellm_params:
+      model: ollama/qwen2.5-coder:32b
+      api_base: http://localhost:11434
+      drop_params: true
+
+litellm_settings:
+  master_key: sk-local-fake-key   # debe coincidir con ANTHROPIC_API_KEY
+  request_timeout: 600             # 10 minutos — modelos grandes son lentos
+  drop_params: true          # agregar aquí también, a nivel global
