@@ -46,3 +46,8 @@ claude --model qwen2.5-coder:32b
   }
 }
 
+# option 3
+
+$env:OLLAMA_API_BASE="http://localhost:11434"
+aider --model ollama/qwen3.5:35b-a3b --edit-format whole
+
