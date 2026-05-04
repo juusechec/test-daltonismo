@@ -1,42 +1,100 @@
-# [Nombre del Proyecto] - Test de Visión Cromática
+# Test de Visión Cromática Ishihara
 
-Este proyecto es una aplicación web diseñada para realizar pruebas preliminares de visión cromática, ayudando a los usuarios a identificar posibles deficiencias en la percepción de colores (como las asociadas con el daltonismo).
+Aplicación web basada en las **Placas Ishihara** para la detección preliminar de daltonismo (deficiencias en la visión de colores rojo-verde).
 
-**⚠️ Descargo de Responsabilidad:** Esta herramienta es solo un test informativo y no sustituye el diagnóstico profesional de un oftalmólogo u optómetra. Los resultados deben ser interpretados por un especialista.
+## ⚠️ Descargo de Responsabilidad
 
-## 🚀 Características Principales
+Esta herramienta es **exclusivamente informativa** y no sustituye el diagnóstico profesional de un oftalmólogo u optometrista. Los resultados deben ser siempre interpretados por un especialista.
 
-*   **Interfaz Interactiva:** Permite al usuario responder a una serie de pruebas visuales en secuencia.
-*   **Análisis de Resultados:** Proporciona un diagnóstico preliminar basado en los patrones de respuesta del usuario (Normal, Protan, Deutan, etc.).
-*   **Experiencia de Usuario:** Diseño enfocado en la usabilidad para minimizar la fatiga visual durante las pruebas.
+## 🎯 Características
 
-## 🛠️ Tecnologías Utilizadas
+- **Test Ishihara Estándar**: 18 placas con diferentes tipos de estímulos cromáticos
+- **Diagnóstico Preliminar**: Detección de Protanopia, Deuteranopia, Visión Normal y otros patrones
+- **Placas Especiales**:
+  - **Vanishing plates**: Visibles solo para personas con visión cromática normal
+  - **Transformation plates**: Diferentes números según el tipo de visión
+  - **Diagnostic plates**: Para distinguir entre Protan y Deutan
+  - **Control plates**: Verificación de la integridad del test
+- **Interfaz Moderna**: Diseño responsivo con animaciones CSS
+- **Análisis Automatizado**: Cálculo de diagnóstico basado en patrones de respuesta
 
-*   HTML5: Estructura de la página.
-*   CSS3: Estilizado y diseño responsivo.
-*   JavaScript (Vanilla JS): Lógica del juego, manejo de estado y análisis de resultados.
+## 🛠️ Tecnologías
 
-## ⚙️ Instalación y Ejecución
+- **HTML5**: Estructura de la aplicación
+- **CSS3**: Estilos y animaciones (vanilla)
+- **JavaScript ES6+**: Lógica de la aplicación (vanilla, sin frameworks)
 
-1.  **Clonar el repositorio:**
-    ```bash
-    git clone [URL_DEL_REPOSITORIO]
-    cd [NOMBRE_DEL_REPOSITORIO]
-    ```
-2.  **Ejecutar la aplicación:**
-    Simplemente abra `index.html` en su navegador web preferido.
+## 🚀 Instalación y Ejecución
 
-## 🧪 Cómo Funciona el Test
+### Opción 1: Ejecutar directamente (Recomendado)
+Simplemente abre `index.html` en tu navegador web. No requiere build process.
 
-El usuario pasará por una serie de "placas" (plates) que contienen combinaciones específicas de colores. El sistema registrará las respuestas del usuario para compararlas con los patrones normales y detectar posibles desviaciones cromáticas.
+### Opción 2: Ejecutar con servidor HTTP
 
-## 📚 Estructura del Código
+```bash
+npm install
+npm start
+```
 
-*   `index.html`: Contiene la estructura principal de la aplicación (pantallas de inicio, prueba y resultados).
-*   `style.css`: Maneja todos los estilos visuales.
-*   `script.js`: Controla el flujo general de la aplicación (mostrar placas, manejar navegación, llamar a análisis).
-*   `logic.js`: Contiene la lógica central de negocio, incluyendo las funciones para analizar las respuestas del usuario y determinar un diagnóstico preliminar.
+La aplicación se abrirá automáticamente en `http://localhost:8000`
 
-## 🤝 Contribución
+## 🧪 Ejecutar Tests
 
-¡Las contribuciones son bienvenidas! Si encuentra errores, tiene ideas para mejorar el test o desea añadir más funcionalidades, por favor abra una *Pull Request*.
+```bash
+npm test
+```
+
+Ejecuta el suite de pruebas unitarias que valida la lógica de diagnóstico con diferentes escenarios de visión cromática.
+
+## 📊 Tipos de Daltonismo Detectados
+
+| Tipo | Códigos | Descripción |
+|------|---------|-------------|
+| **Visión Normal** | NORMAL | Percepción cromática estándar |
+| **Protanopia** | PROTAN | Deficiencia en conos Rojo (L) |
+| **Protanomalía** | PROTANOMAL | Reducción de sensibilidad al Rojo |
+| **Deuteranopia** | DEUTAN | Deficiencia en conos Verde (M) |
+| **Deuteranomalía** | DEUTANOMAL | Reducción de sensibilidad al Verde |
+| **Acromatopsia** | TRITAN / ACHROMATOPSIA | Ceguera total al color (rara) |
+
+## 📁 Estructura del Proyecto
+
+```
+├── index.html          # Estructura principal (3 screens)
+├── style.css           # Estilos CSS y animaciones
+├── script.js           # Lógica UI (navegación, inputs)
+├── logic.js            # Lógica del test (placas, análisis, diagnóstico)
+├── package.json        # Configuración npm
+├── test.js             # Tests unitarios
+├── config.yaml         # Configuración LiteLLM (LLM local)
+├── run.bat             # Script de configuración rápida
+└── assets/
+    └── images/         # Imágenes de las placas Ishihara (.webp)
+```
+
+## 🔧 Configuración para Ejecutar en Windows
+
+1. Instala [Python](https://www.python.org/downloads/)
+2. Ejecuta `run.bat` o usa el comando:
+
+```bash
+npm install
+npm start
+```
+
+## 🧩 Contribuir
+
+¡Las contribuciones son bienvenidas! Para agregar nuevas placas:
+
+1. Edita `logic.js` → `platesConfig` array
+2. Añade el objeto de la placa:
+
+```javascript
+{ id: 13, img: 'test-13.webp', normal: 123, alt: [], type: 'vanishing' }
+```
+
+3. Los tipos de placa son: `vanishing`, `transformation`, `diagnostic`, `control`
+
+## 📄 Licencia
+
+Este proyecto es de código abierto y está disponible para uso educativo y diagnóstico preliminar.
